@@ -1,0 +1,126 @@
+.user-navbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+    width: 95%;
+    height: 80px;
+    border-radius: 13px;
+    position: relative;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 9999;
+    
+}
+
+
+.user-navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #242526;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.logout-btn {
+    background-color: #242526;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #13876e;
+}
+
+.welcome-card-shared-background {
+  margin-top: 30px ;
+  margin-left: 3%; 
+  margin-right: 3%; 
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333; 
+  font-weight: bold;
+}
+
+
+.shared-background {
+  background-image: url('../assets/loggeduserpage.png'); 
+  background-size: cover;
+  background-position: center;
+  padding: 16px;
+  color: white;
+  background-repeat: no-repeat;
+}
+
+.user-navbar {
+  padding: 16px;
+}
+
+.welcome-card {
+  padding: 16px;
+  margin-top: 0; 
+}
+
+.welcome-para {
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.username-card{
+  margin-top: 15px;
+  color: #ffffff;
+}
+
+
+
+
+@media screen and (max-width: 850px) {
+    .user-navbar {
+      
+      padding: 10px;
+      height: auto;
+    }
+  
+    .user-navbar-logo {
+      margin-bottom: 10px;
+    }
+  
+    .username {
+      margin-bottom: 10px;
+    }
+  
+    .logout-btn {
+      background-color: #242526;
+      width: 16%;
+      padding: 9px 0;
+     
+      font-size: 16px;
+      text-align: center;
+      display: block !important;
+    }
+
+    .welcome-card {
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    .shared-background {
+    
+      background-position: top; 
+  }
+}
+
