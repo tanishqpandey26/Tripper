@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+import UserFunctionalityNavbar from './UserFunctionalityNavbar';
+
 
 function CreateItineraryPage() {
   return (
-    <div>
-      <h1 >CreateItineraryPage</h1>
-    </div>
+
+    <>    
+    <UserFunctionalityNavbar/>
+    </>
+    
   )
 }
 

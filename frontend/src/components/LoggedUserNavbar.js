@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {handleSuccess} from "../utils";
 import "./LoggedUserNavbarStyles.css";
 import { useNavigate } from 'react-router-dom';
+import { CiLogout } from "react-icons/ci";
 
 
 function LoggedUserNavbar() {
@@ -37,7 +38,7 @@ function LoggedUserNavbar() {
 
    <h1 className='user-navbar-logo'>Tripper</h1>
 
-   <button className='logout-btn' onClick={handleLogout}>Log Out</button>
+   <button className='logout-btn' onClick={handleLogout}><CiLogout /></button>
 
    </nav>
 
