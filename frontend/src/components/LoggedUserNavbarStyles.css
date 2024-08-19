@@ -28,8 +28,8 @@
 
 
 .logout-btn {
-    /* background-color: #242526; */
-    color: #333;
+    background-color: #333;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -40,7 +40,7 @@
 }
 
 .logout-btn:hover {
-    background-color: #242526;
+    background-color: #555;
 }
 
 .welcome-card-shared-background {

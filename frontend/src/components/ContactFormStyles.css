@@ -31,8 +31,12 @@
 }
 
 .form-container button{
-
+    color: #fff;
+    background-color: #333;
     display: inline;
+    box-shadow: 0 0 10px rgba(0,0, 0, 0.1) !important;
+    border-radius: 10px;
+    transition: 0.5s;
 }
 
 
