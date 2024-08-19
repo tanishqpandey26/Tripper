@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ToastContainer } from 'react-toastify';
 import {handleSuccess} from "../utils";
 import { useNavigate } from 'react-router-dom';
 import { CiLogout } from "react-icons/ci";
@@ -39,8 +38,7 @@ function UserFunctionalityNavbar() {
    <button className='logout-btn' onClick={handleLogout}><CiLogout /></button>
 
    </nav>
-
-    < ToastContainer /> 
+ 
    </>
   )
 }

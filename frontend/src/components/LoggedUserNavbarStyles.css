@@ -75,7 +75,7 @@
 }
 
 .welcome-para {
-  color: #ffffff;
+  color: #000;
   padding: 16px;
   border-radius: 8px;
   /* background-color: rgba(0, 0, 0, 0.1); */
@@ -83,7 +83,7 @@
 
 .username-card{
   margin-top: 15px;
-  color: #ffffff;
+  color: #000;
 }
 
 
