@@ -71,6 +71,11 @@ const login = async (req, res) => {
             {expiresIn : '24h'}
         )
 
+
+        const decoded = jwt.decode(jwtToken);
+        console.log('Decoded Token Payload:', decoded);
+
+        
                 
         res.status(200).json({
             message: "Login successful",

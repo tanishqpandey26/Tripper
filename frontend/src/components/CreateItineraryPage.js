@@ -2,7 +2,8 @@ import React,{useState,useEffect} from 'react';
 import UserFunctionalityNavbar from './UserFunctionalityNavbar';
 import "./CreateItineraryPageStyles.css";
 import CreateImg from  "../assets/create.png";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function CreateItineraryPage() {
@@ -20,28 +21,39 @@ function CreateItineraryPage() {
 
     const token = localStorage.getItem('token');
 
+    if (!token) {
+      toast.error('You need to be logged in to create an itinerary');
+      return;
+    }
+
+    try{
     const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({ title, from, to, remarks }),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ title, from, to, remarks }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      alert('Itinerary created successfully!');
-      
-      setTitle('');
-      setFrom('');
-      setTo('');
-      setRemarks('');
+        toast.success('Itinerary created successfully!');
+        setTitle('');
+        setFrom('');
+        setTo('');
+        setRemarks('');
+        fetchItineraries();
     } else {
-      alert(`Failed to create itinerary: ${data.message}`);
+        toast.error(`Failed to create itinerary: ${data.message}`);
     }
-  };
+  }catch (error){
+    toast.error('an error occured while creating itinerary');
+    console.error('error creating itinerary',error);
+  }
+};
+
 
 
   const fetchItineraries = async () => {
@@ -60,9 +72,10 @@ function CreateItineraryPage() {
       if (response.ok) {
         setItineraries(data.itineraries);
       } else {
-        console.error(`Failed to fetch itineraries: ${data.message}`);
+        toast.error(`Failed to fetch itineraries: ${data.message}`);
       }
     } catch (error) {
+      toast.error('Error fetching itineraries:', error);
       console.error('Error fetching itineraries:', error);
     }
   };
