@@ -4,6 +4,8 @@ import "./CreateItineraryPageStyles.css";
 import CreateImg from  "../assets/create.png";
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { MdDelete,MdEdit } from "react-icons/md";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 function CreateItineraryPage() {
@@ -83,6 +85,13 @@ function CreateItineraryPage() {
   useEffect(() => {
     fetchItineraries();
   }, []);
+  
+
+  const [showOptionsMenu, setShowOptionsMenu] = useState(null);
+
+  const handleOptionsMenu = (id) => {
+    setShowOptionsMenu(showOptionsMenu === id ? null : id);
+  };
 
 
   return (
@@ -150,12 +159,25 @@ function CreateItineraryPage() {
       <div className='itineraries'>
         {itineraries.length > 0 ? (
           itineraries.map((itinerary) => (
+
             <div key={itinerary._id} className="itinerary-card">
+              <div className="itinerary-header">
               <h2>{itinerary.title}</h2>
+              <div className="button-group">
+              <button onClick={() => handleOptionsMenu(itinerary._id)}><BsThreeDotsVertical /></button>
+              {showOptionsMenu === itinerary._id && (
+                  <div className="options-menu">
+                    <button><MdEdit /> Edit</button>
+                    <button><MdDelete /> Delete</button>
+                  </div>
+                )}
+              </div>
+              </div>
               <p><strong>From:</strong> {new Date(itinerary.from).toLocaleDateString()}</p>
               <p><strong>To:</strong> {new Date(itinerary.to).toLocaleDateString()}</p>
               <p><strong>Remarks:</strong> {itinerary.remarks}</p>
             </div>
+
           ))
         ) : (
           <p>No itineraries found.</p>

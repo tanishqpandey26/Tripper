@@ -21,7 +21,7 @@ function Login() {
 
         const {name,value}= e.target;
 
-        console.log(name,value);
+        // console.log(name,value);
 
         const copyLoginInfo={...loginInfo};
 
@@ -80,7 +80,6 @@ function Login() {
                 handleError(message);
             }
 
-            console.log(result);
         }
         catch(err){
             handleError(err);
@@ -122,7 +121,7 @@ function Login() {
                     </div>
 
                     <div className="pass">
-                        <a href="#">Forgot password?</a>
+                        <a href="/signup">Forgot password?</a>
                     </div>
                     <div className="row button">
                         <input type="submit" value="Login" />

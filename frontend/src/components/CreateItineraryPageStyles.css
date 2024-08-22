@@ -66,7 +66,7 @@
 
 .create-iti-form input[type="date"] {
     display: inline-block;
-    width: 80% !; 
+    width: 100% ; 
     margin-bottom: 1.5rem;
     border-radius: 0.3rem;
     border: 1px solid #2a2a2a;
@@ -90,15 +90,78 @@
 }
 
 .itineraries{
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
     padding: 2rem;
     border: 1px solid #222;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 95%;
     margin: 40px auto;
+}
+
+.itinerary-card {
+    border: 1px solid #222;
+    border-radius: 5px;
+    padding: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+.itinerary-card:hover{
+
+    border:2px solid #000;
+    transform: translateY(-5px);
+}
+
+.itinerary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .button-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .options-menu {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .options-menu button {
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+  }
+
+
+  .options-menu button svg {
+    margin-right: 2px;
+  }
+
+.itinerary-card button:hover{
+
+    color: #222;
+    background-color: #fff;
+}
+
+.itinerary-card h2,p{
+
+  margin: 0;
+  text-align: left;
 }
 
 
@@ -161,6 +224,72 @@
     
 }
 
+.itinerary-card {
+    padding: 1.5rem;
+  
+  }
+
+  .itinerary-header {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .itinerary-card button{
+
+    color: #222 !important;
+    background-color: #fff !important;
+}
+
+  .button-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .button-group button{
+    color: #000 ;
+    background-color: #fff ;
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    
+  
+  }
+
+  .options-menu {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; 
+  } 
+
+  .options-menu button {
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .options-menu button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .options-menu button svg {
+    margin-right: 1px;
+    color: #333;
+  }
+   
 }
 
 
