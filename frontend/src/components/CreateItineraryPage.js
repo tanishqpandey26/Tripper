@@ -94,6 +94,32 @@ function CreateItineraryPage() {
   };
 
 
+  const handleDelete = async (itineraryId) => {
+    
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/delete-itinerary/${itineraryId}', {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if(response.ok){
+        setItineraries(itineraries.filter(itinerary => itinerary._id !== itineraryId));
+        toast.success('Itinerary deleted successfully.');
+      }
+      else{
+        toast.error("Failed to delete itinerary");
+      }
+  } 
+    catch(error) {
+      toast.error('An error occured while deleting the itinerary');
+      console.error('Error deleting itinerary',error);
+    }
+  }
+
   return (
 
     <>    
@@ -168,7 +194,7 @@ function CreateItineraryPage() {
               {showOptionsMenu === itinerary._id && (
                   <div className="options-menu">
                     <button><MdEdit /> Edit</button>
-                    <button><MdDelete /> Delete</button>
+                    <button onClick={() => handleDelete(itinerary._id)}><MdDelete /> Delete</button>
                   </div>
                 )}
               </div>
@@ -191,4 +217,5 @@ function CreateItineraryPage() {
   )
 }
 
-export default CreateItineraryPage
+
+export default CreateItineraryPage;
