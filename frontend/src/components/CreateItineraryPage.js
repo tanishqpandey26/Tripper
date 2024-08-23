@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserFunctionalityNavbar from './UserFunctionalityNavbar';
 import "./CreateItineraryPageStyles.css";
 import CreateImg from "../assets/create.png";
+import EditImg from "../assets/edit-iti.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MdDelete, MdEdit } from "react-icons/md";
@@ -158,9 +159,11 @@ function CreateItineraryPage() {
     return (
         <>    
             <UserFunctionalityNavbar/>
+
             <div className='create-head'>
-                <h1>Create Your Itinerary</h1>
+            <h1>Create Your Itinerary</h1>
             </div>
+
             <div className="iti-page">
                 <div className="create-iti-img">
                     <img src={CreateImg} alt="Create Itinerary" />
@@ -203,11 +206,19 @@ function CreateItineraryPage() {
                     </form>
                 </div>
             </div>
+
             <h1>Your Itinerary</h1>
-            <div className='itineraries'>
-                {isEditing && (
-                    <div className="edit-form">
-                        <h2>Edit Itinerary</h2>
+            
+            <div className='edit-page'>
+            {isEditing && (
+                   <>
+
+                        <div className="edit-iti-img">
+                        <img src={EditImg} alt="Edit Itinerary" />
+                        </div>
+
+                        <div className='edit-form'>
+                        <h1>Edit Itinerary</h1>
                         <form onSubmit={handleEdit}>
                             <input
                                 type='text'
@@ -244,15 +255,21 @@ function CreateItineraryPage() {
                             <button type="submit">Update Itinerary</button>
                             <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
                         </form>
-                    </div>
+                        </div>
+                        </>
                 )}
+                </div>
+                
+
+            <div className='itineraries'>
+                
                 {itineraries.length > 0 ? (
                     itineraries.map((itinerary) => (
                         <div key={itinerary._id} className="itinerary-card">
                             <div className="itinerary-header">
                                 <h2>{itinerary.title}</h2>
                                 <div className="button-group">
-                                    <button onClick={() => handleOptionsMenu(itinerary._id)}><BsThreeDotsVertical /></button>
+                                    <button onClick={() => handleOptionsMenu(itinerary._id)}><BsThreeDotsVertical/></button>
                                     {showOptionsMenu === itinerary._id && (
                                         <div className="options-menu">
                                             <button onClick={() => startEditing(itinerary)}><MdEdit /> Edit</button>
