@@ -57,4 +57,30 @@ router.delete('/delete-itinerary/:id', ensureAuthenticated, async (req, res) => 
     }
 })
 
+router.put ('/edit-itinerary/:id', ensureAuthenticated, async (req, res) => {
+    try {
+        const itineraryId =req.params.id;
+        const {title, from, to ,remarks} =req.body;
+
+        const updatedItinerary = await ItineraryModel.findByIdAndUpdate(
+            itineraryId,
+            {title,from,to,remarks},
+            {new: true}
+        );
+
+        if(!updatedItinerary){
+            return res.status(404).json({message:"Itinerary not found"});
+        }
+
+        res.status(200).json({
+            message:"Itinerary updated successfully",
+            itinerary : updatedItinerary
+        });
+    }
+    catch (error){
+        res.status(500).json({message:'Error updating itinerary', error});
+    }
+}
+);
+
 module.exports = router;
