@@ -95,30 +95,28 @@ function CreateItineraryPage() {
 
 
   const handleDelete = async (itineraryId) => {
-    
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/delete-itinerary/${itineraryId}', {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+        const response = await fetch(`https://tripper-apis.vercel.app/api/itineraries/delete-itinerary/${itineraryId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
 
-      if(response.ok){
-        setItineraries(itineraries.filter(itinerary => itinerary._id !== itineraryId));
-        toast.success('Itinerary deleted successfully.');
-      }
-      else{
-        toast.error("Failed to delete itinerary");
-      }
-  } 
-    catch(error) {
-      toast.error('An error occured while deleting the itinerary');
-      console.error('Error deleting itinerary',error);
+        if (response.ok) {
+            setItineraries(itineraries.filter(itinerary => itinerary._id !== itineraryId));
+            toast.success('Itinerary deleted successfully.');
+        } else {
+            toast.error('Failed to delete itinerary.');
+        }
+    } catch (error) {
+        toast.error('An error occurred while deleting the itinerary');
+        console.error('Error deleting itinerary:', error);
     }
-  }
+};
+
 
   return (
 
@@ -192,11 +190,11 @@ function CreateItineraryPage() {
               <div className="button-group">
               <button onClick={() => handleOptionsMenu(itinerary._id)}><BsThreeDotsVertical /></button>
               {showOptionsMenu === itinerary._id && (
-                  <div className="options-menu">
-                    <button><MdEdit /> Edit</button>
-                    <button onClick={() => handleDelete(itinerary._id)}><MdDelete /> Delete</button>
-                  </div>
-                )}
+              <div className="options-menu">
+              <button><MdEdit /> Edit</button>
+              <button onClick={() => handleDelete(itinerary._id)}><MdDelete /> Delete</button>
+              </div>
+               )}
               </div>
               </div>
               <p><strong>From:</strong> {new Date(itinerary.from).toLocaleDateString()}</p>
