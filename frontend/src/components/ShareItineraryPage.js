@@ -47,7 +47,7 @@ function ShareItineraryPage() {
       const token = localStorage.getItem('token');
 
       try {
-        const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/received', {
+        const response = await fetch(`https://tripper-apis.vercel.app/api/itineraries/received`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
