@@ -122,16 +122,16 @@ router.post('/api/itineraries/share', ensureAuthenticated, async (req, res) => {
   });
 
 
-  router.get('/api/itineraries/received', ensureAuthenticated, async (req, res) => {
+  router.get('/received', ensureAuthenticated, async (req, res) => {
     try {
-      const receivedItineraries = await ItineraryModel.find({
-        sharedWith: req.user.id
-      });
+      const userId = req.user.id; 
   
-      res.status(200).json({ receivedItineraries });
+      const receivedItineraries = await ItineraryModel.find({ recipients: userId });
+  
+      res.json(receivedItineraries);
     } catch (error) {
       console.error('Error fetching received itineraries:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      res.status(500).json({ message: 'Failed to fetch received itineraries' });
     }
   });
 

@@ -42,35 +42,38 @@ function ShareItineraryPage() {
 
   const [receivedItineraries, setReceivedItineraries] = useState([]);
 
-  useEffect(() => {
-    const fetchReceivedItineraries = async () => {
-      const token = localStorage.getItem('token');
-
-      try {
-        const response = await fetch(`https://tripper-apis.vercel.app/api/itineraries/received`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          setReceivedItineraries(data.receivedItineraries);
-        } else {
-          toast.error(`Failed to fetch received itineraries: ${data.message}`);
-        }
-      } catch (error) {
-        toast.error('An error occurred while fetching received itineraries');
-        console.error('Error fetching received itineraries:', error);
+  const fetchReceivedItineraries = async () => {
+    const token = localStorage.getItem('token');
+  
+    try {
+      const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/received', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+  
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await response.text();
+        throw new Error(`Unexpected response: ${text}`);
       }
-    };
-
+  
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Received itineraries:', data);
+      } else {
+        console.error(`Failed to fetch received itineraries: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('Error fetching received itineraries:', error.message);
+    }
+  };
+  
+  useEffect(() => {
     fetchReceivedItineraries();
   }, []);
-
 
 
   return (
