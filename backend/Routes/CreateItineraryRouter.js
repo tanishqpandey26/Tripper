@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const ItineraryModel = require ("../Models/Createitinerary");
+const UserModel = require('../Models/User');
 const ensureAuthenticated = require('../Middlewares/Auth');
+
 
 router.post ('/create',ensureAuthenticated, async (req,res)=>{
 
@@ -29,6 +31,7 @@ router.post ('/create',ensureAuthenticated, async (req,res)=>{
     }
 });
 
+
 router.get('/user-itineraries', ensureAuthenticated, async (req, res) => {
     try {
         const userId = req.user._id; 
@@ -38,6 +41,7 @@ router.get('/user-itineraries', ensureAuthenticated, async (req, res) => {
         res.status(500).json({ message: 'Error fetching itineraries', error });
     }
 });
+
 
 router.delete('/delete-itinerary/:id', ensureAuthenticated, async (req, res) => {
     try {
@@ -56,6 +60,7 @@ router.delete('/delete-itinerary/:id', ensureAuthenticated, async (req, res) => 
         res.status(400).json({message:"Error deleting itinerary",error});
     }
 })
+
 
 router.put ('/edit-itinerary/:id', ensureAuthenticated, async (req, res) => {
     try {
@@ -82,5 +87,54 @@ router.put ('/edit-itinerary/:id', ensureAuthenticated, async (req, res) => {
     }
 }
 );
+
+router.post('/api/itineraries/share', ensureAuthenticated, async (req, res) => {
+    const { itineraryId, recipientEmails } = req.body;
+  
+    try {
+      const itinerary = await ItineraryModel.findById(itineraryId);
+  
+      if (!itinerary) {
+        return res.status(404).json({ message: 'Itinerary not found' });
+      }
+  
+      
+      const recipients = await UserModel.find({ email: { $in: recipientEmails } });
+  
+      if (recipients.length === 0) {
+        return res.status(404).json({ message: 'No recipients found' });
+      }
+  
+     
+      recipients.forEach(recipient => {
+        if (!itinerary.sharedWith.includes(recipient._id)) {
+          itinerary.sharedWith.push(recipient._id);
+        }
+      });
+  
+      await itinerary.save();
+  
+      res.status(200).json({ message: 'Itinerary shared successfully' });
+    } catch (error) {
+      console.error('Error sharing itinerary:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+
+  router.get('/api/itineraries/received', ensureAuthenticated, async (req, res) => {
+    try {
+      const receivedItineraries = await ItineraryModel.find({
+        sharedWith: req.user.id
+      });
+  
+      res.status(200).json({ receivedItineraries });
+    } catch (error) {
+      console.error('Error fetching received itineraries:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+  
 
 module.exports = router;

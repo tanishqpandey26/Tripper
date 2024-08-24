@@ -13,7 +13,12 @@
     left: 50%;
     transform: translate(-50%);
     z-index: 9999;
+    border: 2px solid #6EACDA;
     
+}
+
+.user-navbar:hover {
+       border: 3px solid #7ABA78;
 }
 
 
@@ -78,10 +83,11 @@
   color: #000;
   padding: 16px;
   border-radius: 8px;
-  /* background-color: rgba(0, 0, 0, 0.1); */
+  text-align: center;
 }
 
 .username-card{
+  text-align: center;
   margin-top: 15px;
   color: #000;
 }

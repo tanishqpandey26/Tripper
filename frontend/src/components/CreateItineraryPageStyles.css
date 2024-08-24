@@ -8,11 +8,15 @@
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
-    border: 1px solid #222;
+    border: 3px solid #7776B3;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 95%;
     margin: 40px auto;
+}
+
+.iti-page:hover{
+  border: 3px solid #86A7FC;
 }
 
 .create-iti-img {
@@ -99,7 +103,7 @@
 }
 
 .itinerary-card {
-    border: 1px solid #222;
+    border: 3px solid #3085C3;
     border-radius: 5px;
     padding: 2rem;
     margin-bottom: 20px;
@@ -108,7 +112,7 @@
 
 .itinerary-card:hover{
 
-    border:2px solid #000;
+    border:2px solid #16a085;
     transform: translateY(-5px);
 }
 
@@ -125,10 +129,14 @@
     align-items: center;
   }
   
+  .button-group button{
+    color: #333 !important;
+    background-color: #fff !important;
+  }
 
   .options-menu {
     position: absolute;
-    top: 20px;
+    top: 31px;
     right: 0;
     background-color: #fff;
     border: 1px solid #222;

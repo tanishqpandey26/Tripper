@@ -9,6 +9,12 @@
     font-size: 3rem;
 }
 
+.destination p{
+
+    text-align: center;
+}
+
+
 .first-des{
 
     display: flex;
@@ -36,6 +42,7 @@
 .des-text h2{
 
     padding-bottom: 1rem;
+    text-align: center;
 }
 
 .image{

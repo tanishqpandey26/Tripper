@@ -1,10 +1,17 @@
-import React from 'react'
+import React from 'react';
+import UserFunctionalityNavbar from './UserFunctionalityNavbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ShareExperiences() {
   return (
-    <div>
-      <h1>Share Your Experiences</h1>
-    </div>
+    <>
+    
+    <UserFunctionalityNavbar/>
+
+    <ToastContainer/>
+    
+    </>
   )
 }
 

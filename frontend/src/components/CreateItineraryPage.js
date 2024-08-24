@@ -5,8 +5,9 @@ import CreateImg from "../assets/create.png";
 import EditImg from "../assets/edit-iti.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit,MdShare } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
 
 function CreateItineraryPage() {
     const [title, setTitle] = useState('');
@@ -156,6 +157,12 @@ function CreateItineraryPage() {
         }
     };
 
+    const navigate = useNavigate();
+
+    const handleShareClick = () => {
+        navigate('/shareitinerarypage')
+    };
+
     return (
         <>    
             <UserFunctionalityNavbar/>
@@ -272,8 +279,11 @@ function CreateItineraryPage() {
                                     <button onClick={() => handleOptionsMenu(itinerary._id)}><BsThreeDotsVertical/></button>
                                     {showOptionsMenu === itinerary._id && (
                                         <div className="options-menu">
+
                                             <button onClick={() => startEditing(itinerary)}><MdEdit /> Edit</button>
                                             <button onClick={() => handleDelete(itinerary._id)}><MdDelete /> Delete</button>
+                                            <button onClick={handleShareClick}><MdShare /> Share</button>
+
                                         </div>
                                     )}
                                 </div>
@@ -281,6 +291,7 @@ function CreateItineraryPage() {
                             <p><strong>From:</strong> {new Date(itinerary.from).toLocaleDateString()}</p>
                             <p><strong>To:</strong> {new Date(itinerary.to).toLocaleDateString()}</p>
                             <p><strong>Remarks:</strong> {itinerary.remarks}</p>
+                            <p><strong>Itinerary ID:</strong> {itinerary._id}</p> 
                         </div>
                     ))
                 ) : (

@@ -33,7 +33,14 @@ const ItinerarySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User', 
         required: true
-    }
+    },
+
+    sharedWith : [
+        {
+            type:Schema.Types.ObjectId,
+            ref:'User',
+        }
+    ]
 }) ;
 
 const ItineraryModel = mongoose.model('itineraries',ItinerarySchema);
