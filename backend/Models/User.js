@@ -16,6 +16,10 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    receivedItineraries: [{
+        type:Schema.Types.ObjectId,
+        ref:'Itinerary',
+    }]
 });
 
 const UserModel = mongoose.model('users', UserSchema);

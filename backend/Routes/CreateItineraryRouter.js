@@ -136,5 +136,27 @@ router.post('/share', ensureAuthenticated, async (req, res) => {
   });
 
   
+  router.delete('/received/:itineraryId', ensureAuthenticated, async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const { itineraryId } = req.params;
+
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { $pull: { receivedItineraries: itineraryId } },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.json({ message: 'Itinerary deleted successfully', receivedItineraries: user.receivedItineraries });
+    } catch (error) {
+        console.error('Error deleting itinerary:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+  
 
 module.exports = router;
