@@ -88,7 +88,7 @@ router.put ('/edit-itinerary/:id', ensureAuthenticated, async (req, res) => {
 }
 );
 
-router.post('/api/itineraries/share', ensureAuthenticated, async (req, res) => {
+router.post('/share', ensureAuthenticated, async (req, res) => {
     const { itineraryId, recipientEmails } = req.body;
   
     try {
