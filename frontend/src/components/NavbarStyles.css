@@ -132,8 +132,12 @@ button:hover {
     transition: none;
   }
 
+  nav button{
+    display: none !important;
+  }
+
   button {
-    display: none;
+    display: none ;
   }
 
   .nav-links-mobile{

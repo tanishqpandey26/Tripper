@@ -27,7 +27,7 @@ function CreateItineraryPage() {
         }
 
         try {
-            const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/create', {
+            const response = await fetch('https://tripper-api.vercel.app/api/itineraries/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function CreateItineraryPage() {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch('https://tripper-apis.vercel.app/api/itineraries/user-itineraries', {
+            const response = await fetch('https://tripper-api.vercel.app/api/itineraries/user-itineraries', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ function CreateItineraryPage() {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch(`https://tripper-apis.vercel.app/api/itineraries/delete-itinerary/${itineraryId}`, {
+            const response = await fetch(`https://tripper-api.vercel.app/api/itineraries/delete-itinerary/${itineraryId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -128,7 +128,7 @@ function CreateItineraryPage() {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch(`https://tripper-apis.vercel.app/api/itineraries/edit-itinerary/${editItineraryId}`, {
+            const response = await fetch(`https://tripper-api.vercel.app/api/itineraries/edit-itinerary/${editItineraryId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -41,7 +41,7 @@ function SignUp() {
         }
 
         try {
-            const url = "https://tripper-apis.vercel.app/auth/signup";
+            const url = "https://tripper-api.vercel.app/auth/signup";
 
             const response = await fetch(url,{
                 method:"POST",
