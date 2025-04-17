@@ -92,34 +92,31 @@ router.post('/share', ensureAuthenticated, async (req, res) => {
     const { itineraryId, recipientEmails } = req.body;
   
     try {
-      const itinerary = await ItineraryModel.findById(itineraryId);
+        const itinerary = await ItineraryModel.findById(itineraryId);
   
-      if (!itinerary) {
-        return res.status(404).json({ message: 'Itinerary not found' });
-      }
-  
-      
-      const recipients = await UserModel.find({ email: { $in: recipientEmails } });
-  
-      if (recipients.length === 0) {
-        return res.status(404).json({ message: 'No recipients found' });
-      }
-  
-     
-      recipients.forEach(recipient => {
-        if (!itinerary.sharedWith.includes(recipient._id)) {
-          itinerary.sharedWith.push(recipient._id);
+        if (!itinerary) {
+            return res.status(404).json({ message: 'Itinerary not found' });
         }
-      });
   
-      await itinerary.save();
+        const recipients = await UserModel.find({ email: { $in: recipientEmails } });
   
-      res.status(200).json({ message: 'Itinerary shared successfully' });
+        if (recipients.length === 0) {
+            return res.status(404).json({ message: 'No recipients found' });
+        }  
+        recipients.forEach(recipient => {
+            if (!itinerary.sharedWith.includes(recipient._id)) {
+              itinerary.sharedWith.push(recipient._id);
+            }
+        });
+  
+        await itinerary.save();
+  
+        res.status(200).json({ message: 'Itinerary shared successfully' });
     } catch (error) {
-      console.error('Error sharing itinerary:', error);
-      res.status(500).json({ message: 'Internal server error' });
+        console.error('Error sharing itinerary:', error);
+        res.status(500).json({ message: 'Internal server error' });
     }
-  });
+});
 
 
   router.get('/received', ensureAuthenticated, async (req, res) => {
@@ -140,7 +137,6 @@ router.post('/share', ensureAuthenticated, async (req, res) => {
     try {
         const userId = req.user._id;
         const { itineraryId } = req.params;
-
         const user = await User.findByIdAndUpdate(
             userId,
             { $pull: { receivedItineraries: itineraryId } },

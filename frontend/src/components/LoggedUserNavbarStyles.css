@@ -13,12 +13,8 @@
     left: 50%;
     transform: translate(-50%);
     z-index: 9999;
-    border: 2px solid #6EACDA;
+    border: 1px solid #6EACDA;
     
-}
-
-.user-navbar:hover {
-       border: 3px solid #7ABA78;
 }
 
 

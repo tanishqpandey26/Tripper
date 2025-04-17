@@ -16,7 +16,12 @@ app.get('/ping', (req,res)=>{
 })
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use('/auth',AuthRouter);
 app.use('/products',ProductRouter);
 app.use('/api/itineraries', CreateItineraryRouter );

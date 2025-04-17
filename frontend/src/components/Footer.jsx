@@ -4,10 +4,8 @@ import "./FooterStyles.css";
 const Footer = () =>{
 
     return(
-
         <>
         <div className='footer'>
-
         <div className='top'>
             <div>
                 <h1>Tripper</h1>
@@ -77,18 +75,11 @@ const Footer = () =>{
 <a href='/about'>License</a>
 
 </div>
-
         </div>
-
         <div className='footer-copyright'>
-            <h3>Copyright &#169; 2023 Tanishq Pandey</h3>
+            <h3>Copyright &#169; 2024 Tripper</h3>
         </div>
-
-
         </div>
-
-        
-        
         </>
 
     )

@@ -43,9 +43,10 @@ function LoggedUserNavbar() {
    </nav>
 
    <div className="welcome-card-shared-background">
+
+   <h2 className='username-card'>Hi, {loggedInUser}! </h2>
     
     <p className="welcome-para">
-      <h2 className='username-card'>Hi, {loggedInUser}! </h2>
 
        We're thrilled to have you on board with Tripper. As you embark on your journey, we're here to help you make the most of your travel experiences. Lets make your trip smooth and hassle free.  </p>
 </div>
