@@ -18,7 +18,7 @@
 - Deployment: Vercel (Frontend)/(Backend)
 
 4. Architecture Flow
-(.frontend/assets/tripper_architecture.png)
+(.frontend/src/assets/tripper_architecture.png)
 
 User → React App → Express API → MongoDB  
             ↑                    ↓  
@@ -26,16 +26,16 @@ User → React App → Express API → MongoDB
 
 5. Installation
 
-# Clone the repo
+Clone the repo
 git clone https://github.com/tanishqpandey26/Tripper.git
 cd tripper
 
-# For client
+For client
 cd client
 npm install
 npm run dev
 
-# For server
+For server
 cd server
 npm install
 npm start
