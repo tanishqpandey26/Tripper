@@ -17,7 +17,7 @@ function Home() {
    title="Create Your Story"
    text="Choose Your Destination"
    buttonText="Travel Plan"
-   url="/"
+   url="/service"
    btnClass="show"
    />
 
